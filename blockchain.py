@@ -5,11 +5,12 @@ Enunciado Prático: Implemente uma estrutura básica de Blockchain em Python (ou
 
 Requisitos:
 
-    Escreva uma função de hash (ex: SHA-256) que calcule o hash do bloco concatenando seus atributos.
+1) Escreva uma função de hash (ex: SHA-256) que calcule o hash do bloco concatenando seus atributos.
 
-    Implemente o mecanismo de Genesis Block (o primeiro bloco da cadeia).
+2) Implemente o mecanismo de Genesis Block (o primeiro bloco da cadeia).
 
-    Adicione um método para validar a integridade da cadeia (verificar se o previous_hash bate com o hash real do bloco anterior e se nenhum dado foi adulterado).
+3) Adicione um método para validar a integridade da cadeia (verificar se o previous_hash bate com o hash real do bloco anterior e se nenhum dado foi adulterado).
+
 """
 
 import hashlib
@@ -26,7 +27,7 @@ class Block():
         self.hash = self.calculate_hash()
 
     def calculate_hash(self):
-        message = "".join(map(str, [self.index, self.timestamp, self.data, self.previous_hash])).encode()
+        message = "".join(map(str, [self.index, self.timestamp, self.data, self.previous_hash])).encode() # 122026500uefhw1231089
 
 
         return hashlib.sha256(message).hexdigest()
@@ -69,23 +70,23 @@ henriquecoin.add_block("transacao-03")
 henriquecoin.add_block("transacao-04")
 henriquecoin.add_block("transacao-05")
 
-print("Cadeia íntegra é válida?", henriquecoin.is_chain_valid())  # deve ser True
+# print("Cadeia íntegra é válida?", henriquecoin.is_chain_valid())  # deve ser True
 
 # Teste 1: adulterando o 'data' de um bloco
-henriquecoin.chain[3].data = "henriquecoin-roubado"
-print("Após adulterar 'data', cadeia é válida?", henriquecoin.is_chain_valid())  # deve ser False
+# henriquecoin.chain[3].data = "henriquecoin-roubado"
+# print("Após adulterar 'data', cadeia é válida?", henriquecoin.is_chain_valid())  # deve ser False
 # assert henriquecoin.is_chain_valid()
 
 # desfaz a adulteração pra próximo teste não ficar bagunçado
-henriquecoin.chain[3].data = "transacao-04"
+# henriquecoin.chain[3].data = "transacao-03"
 # assert henriquecoin.is_chain_valid()
 
 # Teste 2: adulterando o 'previous_hash' de um bloco
 henriquecoin.chain[3].previous_hash = "0"
-print("Após adulterar 'previous_hash', cadeia é válida?", henriquecoin.is_chain_valid())  # deve ser False
+# print("Após adulterar 'previous_hash', cadeia é válida?", henriquecoin.is_chain_valid())  # deve ser False
 # assert henriquecoin.is_chain_valid()
 
 
 """
-Descomente os codigos do assert e veja que realmente da erro.
+Descomente os codigos e veja que realmente da erro.
 """
