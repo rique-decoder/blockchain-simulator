@@ -1,60 +1,61 @@
-Vou consultar os arquivos e a estrutura do projeto para redigir um README fiel ao repositório.# Blockchain Simulator
 
-Este repositório contém uma implementação educacional de uma blockchain em Python.
+# Blockchain Simulator
 
-O projeto demonstra os conceitos fundamentais de uma cadeia de blocos:
+This repository contains an educational implementation of a blockchain in Python.
 
-- Criação do bloco inicial, chamado **Genesis Block**
-- Armazenamento de índice, data, dados e hash anterior
-- Geração de hashes SHA-256 para cada bloco
-- Encadeamento dos blocos por meio do campo `previous_hash`
-- Validação da integridade da cadeia
-- Detecção de dados ou hashes adulterados
+The project demonstrates the fundamental concepts of a block chain:
 
-## Como funciona
+- Creation of the initial block, called the **Genesis Block**
+- Storage of index, timestamp, data, and previous hash
+- Generation of SHA-256 hashes for each block
+- Chaining of blocks through the `previous_hash` field
+- Chain integrity validation
+- Detection of tampered data or hashes
 
-A classe `Block` representa um bloco da blockchain e contém:
+## How It Works
 
-- `index`: posição do bloco na cadeia
-- `timestamp`: data e hora de criação
-- `data`: conteúdo ou transação armazenada
-- `previous_hash`: hash do bloco anterior
-- `hash`: hash calculado a partir dos dados do bloco
+The `Block` class represents a block in the blockchain and contains:
 
-A classe `Blockchain` cria o bloco gênesis e permite adicionar novos blocos encadeados ao bloco anterior.
+- `index`: position of the block in the chain
+- `timestamp`: creation date and time
+- `data`: stored content or transaction
+- `previous_hash`: hash of the previous block
+- `hash`: hash calculated from the block's data
 
-A integridade é verificada pelo método `is_chain_valid()`, que confirma:
+The `Blockchain` class creates the genesis block and allows adding new blocks linked to the previous one.
 
-1. Se o hash armazenado corresponde ao conteúdo atual do bloco.
-2. Se o `previous_hash` corresponde ao hash real do bloco anterior.
+Integrity is verified by the `is_chain_valid()` method, which confirms:
 
-## Requisitos
+1. Whether the stored hash matches the current content of the block.
+2. Whether the `previous_hash` matches the actual hash of the previous block.
+
+## Requirements
 
 - Python 3
 
-Não há bibliotecas externas necessárias.
+No external libraries are required.
 
-## Executando o projeto
+## Running the Project
 
-Clone o repositório:
+Clone the repository:
 
 ```bash
-git clone https://github.com/rique-decoder/blockchain-simulator.git
+git clone [https://github.com/rique-decoder/blockchain-simulator.git](https://github.com/rique-decoder/blockchain-simulator.git)
 cd blockchain-simulator
 ```
 
-Execute o simulador:
+Run the simulator:
 
 ```bash
 python blockchain.py
 ```
 
-O arquivo de exemplo cria uma blockchain chamada `henriquecoin` e adiciona cinco transações fictícias.
+The example file creates a blockchain named `henriquecoin` and adds five fictional transactions.
 
-## Testando a integridade
+## Testing Integrity
 
-O código contém testes comentados que demonstram como adulterar os dados ou o hash anterior de um bloco. Ao descomentar essas partes, é possível verificar como o método de validação identifica a alteração da cadeia.
+The code contains commented-out tests that demonstrate how to tamper with a block's data or previous hash. By uncommenting these sections, you can see how the validation method detects chain tampering.
 
-## Licença
+## License
 
-Este projeto está disponível sob a licença MIT.
+This project is available under the MIT License.
